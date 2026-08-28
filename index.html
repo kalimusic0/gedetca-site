@@ -214,6 +214,56 @@
   }
   @media (prefers-reduced-motion: reduce) { .deck figure { transition: none; } }
 
+  /* ---- app móvil: tira de teléfonos ---- */
+  .phones {
+    display: flex; gap: clamp(14px, 3vw, 22px);
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding: 14px 2px 22px;
+    scrollbar-width: thin;
+  }
+  .phones::-webkit-scrollbar { height: 8px; }
+  .phones::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+  .phones figure {
+    flex: 0 0 auto; margin: 0; scroll-snap-align: center;
+    width: clamp(178px, 44vw, 224px);
+    border-radius: 30px; overflow: hidden;
+    border: 1px solid var(--line); background: #0c2b30;
+    box-shadow: var(--shadow);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .phones figure:nth-child(odd)  { transform: rotate(-1.4deg); }
+  .phones figure:nth-child(even) { transform: rotate(1.4deg); }
+  .phones figure:hover, .phones figure:focus-visible {
+    transform: rotate(0deg) translateY(-8px);
+    box-shadow: 0 12px 34px rgba(5,52,58,.22);
+  }
+  .phones figure img { display: block; width: 100%; height: auto; }
+  @media (prefers-reduced-motion: reduce) { .phones figure { transition: none; } }
+
+  /* ---- lightbox / zoom ---- */
+  .deck figure img, .phones figure img { cursor: zoom-in; }
+  .lb {
+    position: fixed; inset: 0; z-index: 200;
+    display: none; align-items: center; justify-content: center;
+    background: rgba(5,20,22,.88); padding: clamp(14px, 4vw, 48px);
+    backdrop-filter: blur(3px);
+  }
+  .lb.open { display: flex; }
+  .lb img {
+    max-width: 100%; max-height: 100%;
+    border-radius: 12px; box-shadow: 0 20px 70px rgba(0,0,0,.5);
+    border: 1px solid rgba(255,255,255,.12);
+  }
+  .lb-close {
+    position: absolute; top: clamp(10px, 3vw, 24px); right: clamp(10px, 3vw, 24px);
+    width: 46px; height: 46px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.28); background: rgba(0,0,0,.4);
+    color: #fff; font-size: 24px; line-height: 1; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lb-close:hover { background: rgba(0,0,0,.65); }
+
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 </style>
 
@@ -223,6 +273,7 @@
     <div class="nav-links">
       <a href="#sistema">El sistema</a>
       <a href="#capturas">Por dentro</a>
+      <a href="#app">La app</a>
       <a href="#flujo">El flujo</a>
       <a href="#planes">Planes</a>
     </div>
@@ -412,7 +463,28 @@
   </div>
 </section>
 
-<section class="blk alt" id="planes">
+<section class="blk alt" id="app">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">En el piso de planta</p>
+      <h2>La app Android, en la mano del operario.</h2>
+      <p>Corre sobre la misma base de datos que el sistema de escritorio. Cada módulo escanea el QR del lote, el carro o el master y trabaja al instante. Deslizá para verlos.</p>
+    </div>
+    <div class="phones">
+      <figure><img src="img/mob-1.jpg" alt="Guías y Sellos" loading="lazy"></figure>
+      <figure><img src="img/mob-2.jpg" alt="Solicitud de Etiquetas" loading="lazy"></figure>
+      <figure><img src="img/mob-3.jpg" alt="Pistoleo WS Producción" loading="lazy"></figure>
+      <figure><img src="img/mob-4.jpg" alt="Pistoleo Túnel (WS)" loading="lazy"></figure>
+      <figure><img src="img/mob-5.jpg" alt="Masterizado (WS)" loading="lazy"></figure>
+      <figure><img src="img/mob-6.jpg" alt="Sobranteo / Mix" loading="lazy"></figure>
+      <figure><img src="img/mob-7.jpg" alt="Ingreso / Egreso Cámara" loading="lazy"></figure>
+      <figure><img src="img/mob-8.jpg" alt="Mover / Unificar Master" loading="lazy"></figure>
+    </div>
+    <p class="deck-hint">Guías · Etiquetas · Pistoleo · Túnel · Masterizado · Mix · Cámara · Mover master</p>
+  </div>
+</section>
+
+<section class="blk" id="planes">
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Planes</p>
@@ -472,3 +544,31 @@
     <span>© 2026</span>
   </div>
 </footer>
+
+<div class="lb" id="lb" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="Cerrar zoom">&times;</button>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<script>
+(function () {
+  var lb = document.getElementById('lb'),
+      lbImg = document.getElementById('lbImg'),
+      lbClose = document.getElementById('lbClose');
+  function abrir(src, alt) {
+    lbImg.src = src; lbImg.alt = alt || '';
+    lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function cerrar() {
+    lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true');
+    lbImg.removeAttribute('src'); document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.deck figure img, .phones figure img').forEach(function (img) {
+    img.addEventListener('click', function () { abrir(img.currentSrc || img.src, img.alt); });
+  });
+  lbClose.addEventListener('click', cerrar);
+  lb.addEventListener('click', function (e) { if (e.target === lb) cerrar(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrar(); });
+})();
+</script>
