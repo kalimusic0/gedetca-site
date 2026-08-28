@@ -2,6 +2,7 @@
 <title>GEDETCA SOFT</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Sistema de trazabilidad y producción para plantas procesadoras de camarón: recepción, liquidaciones, túneles, masterizado, cámara de frío y despacho, por lote y código SSCC.">
+<link rel="icon" href="img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -50,8 +51,10 @@
     backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
   }
   nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; }
-  .brand { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 1.05rem; letter-spacing: .03em; color: var(--ink); }
+  .brand { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 1.05rem; letter-spacing: .03em; color: var(--ink); display: inline-flex; align-items: center; }
   .brand span { color: var(--teal); }
+  .brand img { width: 30px; height: 30px; margin-right: 9px; flex: none; }
+  footer .brand img { width: 26px; height: 26px; margin-right: 8px; }
   .nav-links { display: flex; gap: 26px; font-size: .92rem; }
   .nav-links a { color: var(--ink-soft); }
   .nav-links a:hover { color: var(--ink); }
@@ -156,14 +159,61 @@
   footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; align-items: center; }
   footer .brand { font-size: .95rem; }
 
+  /* ---- capturas / baraja ---- */
+  .deck {
+    position: relative; margin: 0 auto;
+    height: clamp(260px, 46vw, 440px); max-width: 900px;
+  }
+  .deck figure {
+    position: absolute; top: 0; left: 50%; margin: 0;
+    width: min(66%, 460px);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: var(--shadow); overflow: hidden;
+    transform-origin: 50% 92%;
+    transition: transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s ease;
+    cursor: pointer;
+  }
+  .deck figure img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--line); background: var(--surface-2); }
+  .deck figcaption {
+    font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--ink-soft);
+    padding: 9px 12px;
+  }
+  .deck .c1 { transform: translateX(-50%) translateX(-38%) rotate(-11deg); z-index: 1; }
+  .deck .c2 { transform: translateX(-50%) translateX(-19%) rotate(-5.5deg); z-index: 2; }
+  .deck .c3 { transform: translateX(-50%) rotate(0deg); z-index: 3; }
+  .deck .c4 { transform: translateX(-50%) translateX(19%) rotate(5.5deg); z-index: 2; }
+  .deck .c5 { transform: translateX(-50%) translateX(38%) rotate(11deg); z-index: 1; }
+  .deck figure:hover, .deck figure:focus-visible {
+    transform: translateX(-50%) translateY(-22px) rotate(0deg) scale(1.06);
+    z-index: 20;
+    box-shadow: 0 8px 18px rgba(5,52,58,.12), 0 30px 60px rgba(5,52,58,.18);
+  }
+  .deck-hint {
+    text-align: center; margin-top: clamp(20px, 4vw, 36px);
+    font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--ink-soft);
+  }
+  @media (max-width: 760px) {
+    .deck {
+      position: static; height: auto; display: flex; gap: 14px;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory; padding: 4px 2px 12px;
+    }
+    .deck figure {
+      position: static; left: auto; width: 82%; flex: 0 0 82%;
+      transform: none !important; scroll-snap-align: center;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) { .deck figure { transition: none; } }
+
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 </style>
 
 <nav>
   <div class="wrap">
-    <span class="brand">GEDETCA<span>&nbsp;SOFT</span></span>
+    <a class="brand" href="#top" aria-label="GEDETCA SOFT — inicio"><img src="img/logo.png" alt="">GEDETCA<span>&nbsp;SOFT</span></a>
     <div class="nav-links">
       <a href="#sistema">El sistema</a>
+      <a href="#capturas">Por dentro</a>
       <a href="#flujo">El flujo</a>
       <a href="#planes">Planes</a>
     </div>
@@ -171,7 +221,7 @@
   </div>
 </nav>
 
-<header class="hero">
+<header class="hero" id="top">
   <div class="wrap">
     <p class="eyebrow">Software para plantas procesadoras de camarón</p>
     <h1>Cada lote, trazado de la guía al despacho.</h1>
@@ -270,6 +320,24 @@
         <h3>App Android</h3><p>Pistoleo y consultas en el piso de planta, con QR.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="blk" id="capturas">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Por dentro</p>
+      <h2>Así se ve trabajando.</h2>
+      <p>Pantallas reales del sistema en producción. Pasá el mouse sobre una para verla de cerca.</p>
+    </div>
+    <div class="deck">
+      <figure class="c1" tabindex="0"><img src="img/cap-1.png" alt="Menú principal de GEDETCA SOFT" loading="lazy"><figcaption>Menú principal · opciones según permisos</figcaption></figure>
+      <figure class="c2" tabindex="0"><img src="img/cap-2.png" alt="Parámetros de usuarios y permisos" loading="lazy"><figcaption>Perfiles y permisos por usuario</figcaption></figure>
+      <figure class="c3" tabindex="0"><img src="img/cap-3.png" alt="Kardex de cámara de frío" loading="lazy"><figcaption>Kardex de cámara · existencias en vivo</figcaption></figure>
+      <figure class="c4" tabindex="0"><img src="img/cap-4.png" alt="Módulo de impresión de etiquetas" loading="lazy"><figcaption>Impresión de etiquetas BarTender</figcaption></figure>
+      <figure class="c5" tabindex="0"><img src="img/cap-5.png" alt="Fichas técnicas de producto" loading="lazy"><figcaption>Fichas técnicas de producto</figcaption></figure>
+    </div>
+    <p class="deck-hint">Recepción · Liquidaciones · Túneles · Masterizado · Cámara · Despacho · Torre de control</p>
   </div>
 </section>
 
@@ -390,7 +458,7 @@
 
 <footer>
   <div class="wrap">
-    <span class="brand">GEDETCA<span style="color:var(--teal)">&nbsp;SOFT</span></span>
+    <span class="brand"><img src="img/logo.png" alt="">GEDETCA<span style="color:var(--teal)">&nbsp;SOFT</span></span>
     <span>Sistema de trazabilidad y producción para plantas de camarón</span>
     <span>© 2026</span>
   </div>
