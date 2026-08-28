@@ -128,24 +128,6 @@
   .flow-fig svg { display: block; width: 100%; min-width: 620px; height: auto; color: var(--ink); }
   .flow-fig figcaption { margin-top: 16px; text-align: center; color: var(--ink-soft); font-size: .9rem; }
 
-  /* ---- planes ---- */
-  .planes { display: grid; gap: 18px; }
-  @media (min-width: 740px) { .planes { grid-template-columns: 1fr 1fr; align-items: start; } }
-  .plan { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 28px 26px; box-shadow: var(--shadow); position: relative; }
-  .plan.rec { border-color: var(--accent); }
-  .plan .badge {
-    position: absolute; top: -11px; left: 26px; background: var(--accent); color: #fff;
-    font-family: "Archivo", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .1em;
-    text-transform: uppercase; padding: 3px 11px; border-radius: 5px;
-  }
-  .plan h3 { font-weight: 700; font-size: 1.22rem; }
-  .plan .price { font-family: "IBM Plex Mono", monospace; font-weight: 500; font-size: 2rem; color: var(--accent); margin: 12px 0 2px; }
-  .plan .price small { display: block; font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); font-family: "Archivo", sans-serif; margin-top: 5px; }
-  .plan ul { list-style: none; padding: 0; margin: 18px 0 0; }
-  .plan li { position: relative; padding-left: 24px; margin-bottom: 9px; font-size: .92rem; }
-  .plan li::before { content: "✓"; position: absolute; left: 0; color: var(--good); font-weight: 700; }
-  .planes-foot { margin-top: 22px; font-size: .95rem; color: var(--ink-soft); }
-
   /* ---- contacto ---- */
   /* banner: se compromete a un solo look oscuro en los dos temas */
   .cta-blk { background: #05343A; color: #EAF3F2; border-radius: 20px; padding: clamp(32px, 6vw, 56px); border: 1px solid rgba(255,255,255,.06); }
@@ -275,7 +257,6 @@
       <a href="#capturas">Por dentro</a>
       <a href="#app">La app</a>
       <a href="#flujo">El flujo</a>
-      <a href="#planes">Planes</a>
     </div>
     <a class="nav-cta" href="#contacto">Solicitar demo</a>
   </div>
@@ -292,7 +273,7 @@
     </p>
     <div class="btn-row">
       <a class="btn btn-primary" href="#contacto">Solicitar una demo</a>
-      <a class="btn btn-ghost" href="https://propuesta.gedetca.com" target="_blank" rel="noopener">Ver planes y precios →</a>
+      <a class="btn btn-ghost" href="#sistema">Ver el sistema</a>
     </div>
     <div class="hero-strip">
       <span>Trazabilidad <b>GS1 / SSCC</b></span><span class="dot"></span>
@@ -484,44 +465,6 @@
   </div>
 </section>
 
-<section class="blk" id="planes">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Planes</p>
-      <h2>Dos formas de llevarlo a tu planta.</h2>
-      <p>Ambos son de pago único e incluyen instalación, migración de datos y capacitación.</p>
-    </div>
-    <div class="planes">
-      <div class="plan">
-        <h3>Aplicación</h3>
-        <div class="price">USD 5.000<small>Pago único</small></div>
-        <ul>
-          <li>Servidor de la aplicación como ejecutable</li>
-          <li>Instalador para las PC de la planta</li>
-          <li>App Android apuntando a tu servidor</li>
-          <li>Instalación, migración y capacitación</li>
-          <li>6 meses de acompañamiento y ajustes</li>
-        </ul>
-      </div>
-      <div class="plan rec">
-        <span class="badge">Recomendado</span>
-        <h3>Aplicación + Código Fuente</h3>
-        <div class="price">USD 10.000<small>Pago único</small></div>
-        <ul>
-          <li>Todo lo del plan Aplicación</li>
-          <li>Código fuente completo + documentación</li>
-          <li>Licencia de modificación para uso propio</li>
-          <li>Ampliaciones a pedido por GEDETCA SOFT</li>
-        </ul>
-      </div>
-    </div>
-    <p class="planes-foot">
-      Mantenimiento anual opcional (18&nbsp;% del valor / año). &nbsp;
-      <a href="https://propuesta.gedetca.com" target="_blank" rel="noopener">Ver la propuesta completa →</a>
-    </p>
-  </div>
-</section>
-
 <section class="blk" id="contacto">
   <div class="wrap">
     <div class="cta-blk">
@@ -541,7 +484,7 @@
   <div class="wrap">
     <span class="brand"><img src="img/logo.png" alt="">GEDETCA<span style="color:var(--teal)">&nbsp;SOFT</span></span>
     <span>Sistema de trazabilidad y producción para plantas de camarón</span>
-    <span>© 2026</span>
+    <span><a href="https://propuesta.gedetca.com" target="_blank" rel="noopener">Propuesta comercial</a> · © 2026</span>
   </div>
 </footer>
 
