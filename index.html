@@ -1,0 +1,397 @@
+<meta charset="utf-8">
+<title>GEDETCA SOFT</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Sistema de trazabilidad y producción para plantas procesadoras de camarón: recepción, liquidaciones, túneles, masterizado, cámara de frío y despacho, por lote y código SSCC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+  /* La landing se compromete a un solo look claro, pintado explícitamente
+     para que se mantenga aunque el visitante tenga el equipo en modo oscuro. */
+  :root {
+    --paper:      #FBFCFC;
+    --paper-2:    #F1F5F4;
+    --surface:    #FFFFFF;
+    --surface-2:  #EDF2F1;
+    --ink:        #16201F;
+    --ink-soft:   #53615F;
+    --line:       #DCE4E3;
+    --teal:       #0A5F6A;
+    --teal-deep:  #05343A;
+    --accent:     #A9502F;
+    --accent-bg:  #F5E7E0;
+    --good:       #2E7D6A;
+    --shadow:     0 1px 2px rgba(5,52,58,.04), 0 12px 34px rgba(5,52,58,.07);
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.65; font-size: 16px;
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  a { color: var(--teal); text-decoration: none; }
+  h1, h2, h3 { font-family: "Archivo", sans-serif; letter-spacing: -.015em; text-wrap: balance; margin: 0; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 44px); }
+  .eyebrow {
+    font-family: "Archivo", sans-serif; font-weight: 600; text-transform: uppercase;
+    letter-spacing: .2em; font-size: 12px; color: var(--accent);
+  }
+
+  /* ---- nav ---- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--paper);
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .brand { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 1.05rem; letter-spacing: .03em; color: var(--ink); }
+  .brand span { color: var(--teal); }
+  .nav-links { display: flex; gap: 26px; font-size: .92rem; }
+  .nav-links a { color: var(--ink-soft); }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    font-family: "Archivo", sans-serif; font-weight: 600; font-size: .85rem;
+    background: var(--teal-deep); color: #fff; padding: 8px 16px; border-radius: 8px;
+  }
+  @media (max-width: 680px) { .nav-links { display: none; } }
+
+  /* ---- hero ---- */
+  .hero { padding: clamp(56px, 12vw, 118px) 0 clamp(44px, 9vw, 84px); }
+  .hero h1 {
+    font-weight: 800; font-size: clamp(2.4rem, 7vw, 4.1rem); line-height: 1.02;
+    margin: 18px 0 22px; max-width: 15ch;
+  }
+  .hero p.lead { font-size: clamp(1.05rem, 2.5vw, 1.28rem); color: var(--ink-soft); max-width: 54ch; margin: 0 0 32px; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    font-family: "Archivo", sans-serif; font-weight: 600; font-size: .95rem;
+    padding: 13px 24px; border-radius: 10px; display: inline-flex; align-items: center; gap: 9px;
+    transition: transform .12s ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  .hero-strip {
+    margin-top: clamp(40px, 8vw, 68px); display: flex; flex-wrap: wrap; gap: 10px 8px;
+    font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--ink-soft);
+    align-items: center;
+  }
+  .hero-strip b { color: var(--teal-deep); font-weight: 500; }
+  .hero-strip .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--line); }
+
+  /* ---- section frame ---- */
+  section.blk { padding: clamp(52px, 10vw, 96px) 0; border-top: 1px solid var(--line); }
+  section.blk.alt { background: var(--paper-2); }
+  .sec-head { max-width: 60ch; margin-bottom: clamp(28px, 5vw, 48px); }
+  .sec-head h2 { font-weight: 700; font-size: clamp(1.7rem, 4.5vw, 2.5rem); margin: 12px 0 10px; }
+  .sec-head p { color: var(--ink-soft); margin: 0; font-size: 1.05rem; }
+
+  /* ---- problema / solución ---- */
+  .compare { display: grid; gap: 18px; grid-template-columns: 1fr; }
+  @media (min-width: 720px) { .compare { grid-template-columns: 1fr 1fr; } }
+  .compare .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 26px 24px; box-shadow: var(--shadow); }
+  .compare .tag {
+    font-family: "Archivo", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .12em;
+    text-transform: uppercase; display: inline-block; padding: 3px 10px; border-radius: 6px; margin-bottom: 14px;
+  }
+  .compare .antes .tag { background: var(--surface-2); color: var(--ink-soft); }
+  .compare .con .tag { background: var(--accent-bg); color: var(--accent); }
+  .compare ul { list-style: none; padding: 0; margin: 0; }
+  .compare li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: .96rem; }
+  .compare .antes li::before { content: "×"; position: absolute; left: 2px; top: -1px; color: var(--ink-soft); font-weight: 700; }
+  .compare .con li::before { content: ""; position: absolute; left: 3px; top: .55em; width: 8px; height: 8px; background: var(--good); border-radius: 2px; }
+
+  /* ---- módulos ---- */
+  .mods { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 560px) { .mods { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 900px) { .mods { grid-template-columns: 1fr 1fr 1fr; } }
+  .mod {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 20px 20px 22px; box-shadow: var(--shadow);
+  }
+  .mod svg { width: 26px; height: 26px; color: var(--teal); display: block; margin-bottom: 12px; }
+  .mod h3 { font-weight: 600; font-size: 1.02rem; margin-bottom: 4px; }
+  .mod p { margin: 0; font-size: .89rem; color: var(--ink-soft); line-height: 1.55; }
+
+  /* ---- flujo ---- */
+  .flow-fig { margin: 0; }
+  .flow-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .flow-fig svg { display: block; width: 100%; min-width: 620px; height: auto; color: var(--ink); }
+  .flow-fig figcaption { margin-top: 16px; text-align: center; color: var(--ink-soft); font-size: .9rem; }
+
+  /* ---- planes ---- */
+  .planes { display: grid; gap: 18px; }
+  @media (min-width: 740px) { .planes { grid-template-columns: 1fr 1fr; align-items: start; } }
+  .plan { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 28px 26px; box-shadow: var(--shadow); position: relative; }
+  .plan.rec { border-color: var(--accent); }
+  .plan .badge {
+    position: absolute; top: -11px; left: 26px; background: var(--accent); color: #fff;
+    font-family: "Archivo", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .1em;
+    text-transform: uppercase; padding: 3px 11px; border-radius: 5px;
+  }
+  .plan h3 { font-weight: 700; font-size: 1.22rem; }
+  .plan .price { font-family: "IBM Plex Mono", monospace; font-weight: 500; font-size: 2rem; color: var(--accent); margin: 12px 0 2px; }
+  .plan .price small { display: block; font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); font-family: "Archivo", sans-serif; margin-top: 5px; }
+  .plan ul { list-style: none; padding: 0; margin: 18px 0 0; }
+  .plan li { position: relative; padding-left: 24px; margin-bottom: 9px; font-size: .92rem; }
+  .plan li::before { content: "✓"; position: absolute; left: 0; color: var(--good); font-weight: 700; }
+  .planes-foot { margin-top: 22px; font-size: .95rem; color: var(--ink-soft); }
+
+  /* ---- contacto ---- */
+  /* banner: se compromete a un solo look oscuro en los dos temas */
+  .cta-blk { background: #05343A; color: #EAF3F2; border-radius: 20px; padding: clamp(32px, 6vw, 56px); border: 1px solid rgba(255,255,255,.06); }
+  .cta-blk h2 { color: #fff; font-weight: 700; font-size: clamp(1.6rem, 4.5vw, 2.3rem); margin-bottom: 12px; }
+  .cta-blk p { color: #B9D4D2; margin: 0 0 24px; max-width: 48ch; }
+  .cta-lines { display: flex; flex-wrap: wrap; gap: 10px 28px; font-family: "IBM Plex Mono", monospace; font-size: 14px; }
+  .cta-lines a, .cta-lines span { color: #EAF3F2; }
+  .cta-lines .k { color: #7FC0BF; }
+
+  footer { padding: 40px 0 56px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: .86rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; align-items: center; }
+  footer .brand { font-size: .95rem; }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+</style>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">GEDETCA<span>&nbsp;SOFT</span></span>
+    <div class="nav-links">
+      <a href="#sistema">El sistema</a>
+      <a href="#flujo">El flujo</a>
+      <a href="#planes">Planes</a>
+    </div>
+    <a class="nav-cta" href="#contacto">Solicitar demo</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Software para plantas procesadoras de camarón</p>
+    <h1>Cada lote, trazado de la guía al despacho.</h1>
+    <p class="lead">
+      GEDETCA&nbsp;SOFT lleva la trazabilidad y la producción completa de tu planta
+      —recepción, liquidaciones, túneles, masterizado, cámara de frío y despacho—
+      en un solo sistema, por lote y código SSCC.
+    </p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#contacto">Solicitar una demo</a>
+      <a class="btn btn-ghost" href="https://propuesta.gedetca.com" target="_blank" rel="noopener">Ver planes y precios →</a>
+    </div>
+    <div class="hero-strip">
+      <span>Trazabilidad <b>GS1 / SSCC</b></span><span class="dot"></span>
+      <span>Etiquetado <b>BarTender</b></span><span class="dot"></span>
+      <span>App <b>Android</b> para piso de planta</span><span class="dot"></span>
+      <span>Base de datos <b>propia</b></span>
+    </div>
+  </div>
+</header>
+
+<section class="blk" id="problema">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">El problema</p>
+      <h2>La información de la planta vive en pedazos.</h2>
+      <p>Planillas de Excel por área, mensajes de WhatsApp, cuadernos. Al final del turno nadie sabe con certeza cuánto entró, cuánto se procesó y dónde quedó cada caja.</p>
+    </div>
+    <div class="compare">
+      <div class="card antes">
+        <span class="tag">Sin sistema</span>
+        <ul>
+          <li>Libras recibidas que nadie cruza contra lo procesado</li>
+          <li>Carros y túneles que se olvidan sin registrar</li>
+          <li>Cajas encartonadas que no se sabe si ya se palletizaron</li>
+          <li>Cámara descuadrada respecto al papel</li>
+          <li>Reportes de trazabilidad armados a mano, tarde</li>
+        </ul>
+      </div>
+      <div class="card con">
+        <span class="tag">Con GEDETCA SOFT</span>
+        <ul>
+          <li>Una sola fuente: cada lote trazado por las 7 etapas</li>
+          <li>Saldo pendiente visible en cada salto del proceso</li>
+          <li>Alerta cuando las libras no cuadran de punta a punta</li>
+          <li>Kardex de cámara en tiempo real, con SSCC</li>
+          <li>Etiquetas y reportes salen del sistema, al instante</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blk alt" id="sistema">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">El sistema</p>
+      <h2>Un módulo por cada etapa de la planta.</h2>
+      <p>Todo conectado sobre la misma base de datos, del ingreso de la materia prima hasta el despacho al cliente.</p>
+    </div>
+    <div class="mods">
+      <div class="mod">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
+        <h3>Recepción y lotes</h3><p>Guías de materia prima, lotes, macrolotes y proveedores.</p>
+      </div>
+      <div class="mod">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6l-3 6a3 3 0 0 0 3 4h12a3 3 0 0 0 3-4l-3-6V3"/><path d="M5 3h14"/></svg>
+        <h3>Liquidación de producción</h3><p>Entero y cola, por área y turno, con rendimiento y merma.</p>
+      </div>
+      <div class="mod">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M4 7l8-4 8 4M4 17l8 4 8-4M4 7v10M20 7v10"/></svg>
+        <h3>Túneles y congelado</h3><p>Ingreso de carros, control de tumbada y liquidación de túnel.</p>
+      </div>
+      <div class="mod">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="1"/><path d="M3 12h18M9 8V5h6v3"/></svg>
+        <h3>Masterizado y pallets</h3><p>Armado de masters y pallets con serial SSCC GS1.</p>
+      </div>
+      <div class="mod">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18M6.3 6.3l11.4 11.4M17.7 6.3 6.3 17.7"/></svg>
+        <h3>Cámara de frío — Kardex</h3><p>Existencias y movimientos de ingreso y egreso en vivo.</p>
+      </div>
+      <div class="mod">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h11M14 12l-4-4M14 12l-4 4"/><path d="M14 5h5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-5"/></svg>
+        <h3>Egreso y despacho</h3><p>Órdenes de trabajo, egreso parcial, conversión y reingreso.</p>
+      </div>
+      <div class="mod">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M6 9v6M9 9v6M12 9v6M16 9v6M19 9v6"/></svg>
+        <h3>Etiquetado BarTender</h3><p>Impresión industrial con plantillas y campos del producto.</p>
+      </div>
+      <div class="mod">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+        <h3>Torre de control</h3><p>Saldo pendiente por etapa y conciliación por lote.</p>
+      </div>
+      <div class="mod">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg>
+        <h3>App Android</h3><p>Pistoleo y consultas en el piso de planta, con QR.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="flujo">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">El flujo</p>
+      <h2>De la libra a la caja, de la caja al pallet, del pallet a la cámara.</h2>
+      <p>El sistema conserva la trazabilidad en cada transformación. Si en algún punto el saldo no cuadra, lo marca.</p>
+    </div>
+    <figure class="flow-fig">
+     <div class="flow-scroll">
+      <svg viewBox="0 0 960 150" role="img" aria-label="Flujo de proceso: recepción, proceso, túnel, masterizado, pallet, cámara y despacho, con trazabilidad en cada paso.">
+        <defs>
+          <marker id="fa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="currentColor"></path>
+          </marker>
+        </defs>
+        <g font-family="Archivo, sans-serif" font-size="12.5" font-weight="600" text-anchor="middle">
+          <g>
+            <rect x="6"   y="46" width="118" height="42" rx="8" fill="var(--surface-2)" stroke="var(--line)"></rect>
+            <text x="65"  y="72" fill="var(--ink)">Recepción</text>
+          </g>
+          <line x1="128" y1="67" x2="152" y2="67" stroke="var(--teal-deep)" stroke-width="1.6" marker-end="url(#fa)" color="var(--teal-deep)"></line>
+          <g>
+            <rect x="156" y="46" width="118" height="42" rx="8" fill="var(--surface)" stroke="var(--teal-deep)" stroke-width="1.4"></rect>
+            <text x="215" y="72" fill="var(--ink)">Proceso</text>
+          </g>
+          <line x1="278" y1="67" x2="302" y2="67" stroke="var(--teal-deep)" stroke-width="1.6" marker-end="url(#fa)" color="var(--teal-deep)"></line>
+          <g>
+            <rect x="306" y="46" width="118" height="42" rx="8" fill="var(--surface)" stroke="var(--teal-deep)" stroke-width="1.4"></rect>
+            <text x="365" y="72" fill="var(--ink)">Túnel</text>
+          </g>
+          <line x1="428" y1="67" x2="452" y2="67" stroke="var(--teal-deep)" stroke-width="1.6" marker-end="url(#fa)" color="var(--teal-deep)"></line>
+          <g>
+            <rect x="456" y="46" width="118" height="42" rx="8" fill="var(--surface)" stroke="var(--teal-deep)" stroke-width="1.4"></rect>
+            <text x="515" y="72" fill="var(--ink)">Masterizado</text>
+          </g>
+          <line x1="578" y1="67" x2="602" y2="67" stroke="var(--teal-deep)" stroke-width="1.6" marker-end="url(#fa)" color="var(--teal-deep)"></line>
+          <g>
+            <rect x="606" y="46" width="118" height="42" rx="8" fill="var(--surface)" stroke="var(--teal-deep)" stroke-width="1.4"></rect>
+            <text x="665" y="72" fill="var(--ink)">Cámara</text>
+          </g>
+          <line x1="728" y1="67" x2="752" y2="67" stroke="var(--teal-deep)" stroke-width="1.6" marker-end="url(#fa)" color="var(--teal-deep)"></line>
+          <g>
+            <rect x="756" y="46" width="118" height="42" rx="8" fill="var(--surface-2)" stroke="var(--line)"></rect>
+            <text x="815" y="72" fill="var(--ink)">Despacho</text>
+          </g>
+        </g>
+        <g font-family="'IBM Plex Mono', monospace" font-size="10.5" text-anchor="middle" fill="var(--accent)">
+          <text x="65"  y="112">libras</text>
+          <text x="215" y="112">cajas</text>
+          <text x="365" y="112">congelado</text>
+          <text x="515" y="112">masters</text>
+          <text x="665" y="112">pallet</text>
+          <text x="815" y="112">cliente</text>
+        </g>
+        <text x="480" y="24" font-family="Archivo, sans-serif" font-size="11" font-weight="600" letter-spacing="1.4" text-anchor="middle" fill="var(--ink-soft)">TRAZADO EN CADA PASO · SSCC POR MASTER Y PALLET</text>
+      </svg>
+     </div>
+      <figcaption>El mismo lote se sigue por número y por código SSCC en toda la cadena.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="blk alt" id="planes">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Planes</p>
+      <h2>Dos formas de llevarlo a tu planta.</h2>
+      <p>Ambos son de pago único e incluyen instalación, migración de datos y capacitación.</p>
+    </div>
+    <div class="planes">
+      <div class="plan">
+        <h3>Aplicación</h3>
+        <div class="price">USD 5.000<small>Pago único</small></div>
+        <ul>
+          <li>Servidor de la aplicación como ejecutable</li>
+          <li>Instalador para las PC de la planta</li>
+          <li>App Android apuntando a tu servidor</li>
+          <li>Instalación, migración y capacitación</li>
+          <li>6 meses de acompañamiento y ajustes</li>
+        </ul>
+      </div>
+      <div class="plan rec">
+        <span class="badge">Recomendado</span>
+        <h3>Aplicación + Código Fuente</h3>
+        <div class="price">USD 10.000<small>Pago único</small></div>
+        <ul>
+          <li>Todo lo del plan Aplicación</li>
+          <li>Código fuente completo + documentación</li>
+          <li>Licencia de modificación para uso propio</li>
+          <li>Ampliaciones a pedido por GEDETCA SOFT</li>
+        </ul>
+      </div>
+    </div>
+    <p class="planes-foot">
+      Mantenimiento anual opcional (18&nbsp;% del valor / año). &nbsp;
+      <a href="https://propuesta.gedetca.com" target="_blank" rel="noopener">Ver la propuesta completa →</a>
+    </p>
+  </div>
+</section>
+
+<section class="blk" id="contacto">
+  <div class="wrap">
+    <div class="cta-blk">
+      <p class="eyebrow" style="color:#E0A98C">Contacto</p>
+      <h2>Agenda una demostración.</h2>
+      <p>Te mostramos el sistema con datos reales de una planta y armamos una propuesta según tu operación.</p>
+      <div class="cta-lines">
+        <span><span class="k">Contacto:</span> Carlos Hernández</span>
+        <a href="https://wa.me/593983978603"><span class="k">WhatsApp:</span> +593 98 397 8603</a>
+        <a href="mailto:ventas@gedetca.com"><span class="k">Correo:</span> ventas@gedetca.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">GEDETCA<span style="color:var(--teal)">&nbsp;SOFT</span></span>
+    <span>Sistema de trazabilidad y producción para plantas de camarón</span>
+    <span>© 2026</span>
+  </div>
+</footer>
