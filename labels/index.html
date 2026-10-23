@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Gedetca Labels · Motor de etiquetas gratuito</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Gedetca Labels: motor de impresión nuevo y gratuito para gestionar plantillas de etiquetas adhesivas. Junto con Gedetca Web, el sistema completo de etiquetas y pistoleo de códigos de barras 1D y 2D.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gedetca Labels · Motor de etiquetas gratuito">
+<meta property="og:description" content="Diseña e imprime etiquetas adhesivas con códigos 1D y 2D. Con Gedetca Web, el sistema completo de etiquetas y pistoleo.">
+<meta property="og:image" content="https://www.gedetca.com/img/labels-1.jpg">
+<link rel="canonical" href="https://www.gedetca.com/labels/">
+<link rel="icon" href="../img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+  :root {
+    --paper:#FBFCFC; --paper-2:#F1F5F4; --surface:#FFFFFF; --surface-2:#EDF2F1;
+    --ink:#16201F; --ink-soft:#53615F; --line:#DCE4E3;
+    --teal:#0A5F6A; --teal-deep:#05343A; --accent:#A9502F; --accent-bg:#F5E7E0; --good:#2E7D6A;
+    --shadow:0 1px 2px rgba(5,52,58,.04), 0 12px 34px rgba(5,52,58,.07);
+    color-scheme: light;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif; line-height:1.65; font-size:16px; }
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} }
+  a { color:var(--teal); text-decoration:none; }
+  h1,h2,h3 { font-family:"Archivo",sans-serif; letter-spacing:-.015em; text-wrap:balance; margin:0; }
+  .wrap { max-width:1040px; margin:0 auto; padding:0 clamp(20px,5vw,44px); }
+  .eyebrow { font-family:"Archivo",sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:.2em; font-size:12px; color:var(--accent); }
+
+  nav { position:sticky; top:0; z-index:50; background:var(--paper); background:color-mix(in srgb,var(--paper) 88%,transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  nav .wrap { display:flex; align-items:center; justify-content:space-between; height:62px; }
+  .brand { font-family:"Archivo",sans-serif; font-weight:800; font-size:1.05rem; letter-spacing:.03em; color:var(--ink); display:inline-flex; align-items:center; }
+  .brand span { color:var(--teal); }
+  .brand img { width:30px; height:30px; margin-right:9px; flex:none; }
+  .nav-links { display:flex; gap:26px; font-size:.92rem; }
+  .nav-links a { color:var(--ink-soft); }
+  .nav-links a:hover { color:var(--ink); }
+  .nav-cta { font-family:"Archivo",sans-serif; font-weight:600; font-size:.85rem; background:var(--accent); color:#fff; padding:8px 16px; border-radius:8px; }
+  @media (max-width:680px){ .nav-links{display:none;} }
+
+  .hero { padding:clamp(48px,10vw,96px) 0 clamp(36px,7vw,64px); }
+  .badge { display:inline-flex; gap:8px; align-items:center; font-family:"Archivo",sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; padding:5px 12px; border-radius:999px; background:var(--accent-bg); color:var(--accent); margin-bottom:6px; }
+  .badge::before { content:""; width:7px; height:7px; border-radius:50%; background:var(--accent); }
+  .hero h1 { font-weight:800; font-size:clamp(2.3rem,6.6vw,3.9rem); line-height:1.04; margin:16px 0 22px; max-width:17ch; }
+  .hero h1 em { font-style:normal; color:var(--teal); }
+  .hero p.lead { font-size:clamp(1.05rem,2.4vw,1.25rem); color:var(--ink-soft); max-width:58ch; margin:0 0 30px; }
+  .hero p.lead b { color:var(--ink); }
+  .btn-row { display:flex; flex-wrap:wrap; gap:12px; }
+  .btn { font-family:"Archivo",sans-serif; font-weight:600; font-size:.97rem; padding:14px 26px; border-radius:10px; display:inline-flex; align-items:center; gap:10px; transition:transform .12s ease; }
+  .btn:active { transform:translateY(1px); }
+  .btn svg { width:19px; height:19px; stroke:currentColor; fill:none; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }
+  .btn-primary { background:var(--accent); color:#fff; }
+  .btn-dark { background:var(--teal-deep); color:#fff; }
+  .btn-ghost { background:transparent; color:var(--ink); border:1px solid var(--line); }
+  .hero-note { margin:14px 0 0; font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-soft); }
+  .hero-shot { margin:clamp(34px,6vw,54px) 0 0; border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:var(--shadow); background:var(--surface); }
+  .hero-shot img { display:block; width:100%; height:auto; cursor:zoom-in; }
+  .hero-shot figcaption { font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-soft); padding:10px 14px; border-top:1px solid var(--line); }
+
+  section.blk { padding:clamp(48px,9vw,88px) 0; border-top:1px solid var(--line); }
+  section.blk.alt { background:var(--paper-2); }
+  .sec-head { max-width:62ch; margin-bottom:clamp(26px,5vw,44px); }
+  .sec-head h2 { font-weight:700; font-size:clamp(1.65rem,4.4vw,2.4rem); margin:12px 0 10px; }
+  .sec-head p { color:var(--ink-soft); margin:0; font-size:1.05rem; }
+
+  .mods { display:grid; gap:14px; grid-template-columns:1fr; }
+  @media (min-width:560px){ .mods{grid-template-columns:1fr 1fr;} }
+  @media (min-width:900px){ .mods{grid-template-columns:1fr 1fr 1fr;} }
+  .mod { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px 20px 22px; box-shadow:var(--shadow); }
+  .mod svg { width:26px; height:26px; color:var(--teal); display:block; margin-bottom:12px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  .mod h3 { font-weight:600; font-size:1.02rem; margin-bottom:4px; }
+  .mod p { margin:0; font-size:.9rem; color:var(--ink-soft); line-height:1.55; }
+
+  /* ---- Labels + Web: el bloque que empuja Gedetca Web ---- */
+  .duo { display:grid; gap:18px; grid-template-columns:1fr; }
+  @media (min-width:760px){ .duo{grid-template-columns:1fr 1.18fr;} }
+  .duo .card { background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:26px 24px; box-shadow:var(--shadow); }
+  .duo .tag { font-family:"Archivo",sans-serif; font-weight:700; font-size:11px; letter-spacing:.12em; text-transform:uppercase; display:inline-block; padding:3px 10px; border-radius:6px; margin-bottom:12px; }
+  .duo .solo .tag { background:var(--surface-2); color:var(--ink-soft); }
+  .duo .full { background:#05343A; border-color:rgba(255,255,255,.06); color:#EAF3F2; }
+  .duo .full .tag { background:var(--accent); color:#fff; }
+  .duo h3 { font-weight:700; font-size:1.3rem; margin-bottom:6px; }
+  .duo .full h3 { color:#fff; }
+  .duo .sub { margin:0 0 16px; font-size:.93rem; color:var(--ink-soft); }
+  .duo .full .sub { color:#B9D4D2; }
+  .duo ul { list-style:none; padding:0; margin:0; }
+  .duo li { position:relative; padding-left:26px; margin-bottom:10px; font-size:.95rem; }
+  .duo .solo li::before { content:""; position:absolute; left:3px; top:.55em; width:8px; height:8px; background:var(--ink-soft); border-radius:2px; opacity:.55; }
+  .duo .full li::before { content:""; position:absolute; left:3px; top:.55em; width:8px; height:8px; background:#5FD0B0; border-radius:2px; }
+  .duo .full li b { color:#fff; }
+  .duo .full .btn { margin-top:10px; background:#fff; color:#05343A; }
+  .duo .full .btn:hover { background:var(--accent); color:#fff; }
+
+  .steps { display:grid; gap:14px; grid-template-columns:1fr; counter-reset:s; }
+  @media (min-width:760px){ .steps{grid-template-columns:repeat(4,1fr);} }
+  .step { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:18px 18px 20px; counter-increment:s; box-shadow:var(--shadow); }
+  .step::before { content:counter(s); font-family:"Archivo",sans-serif; font-weight:800; font-size:1.5rem; color:var(--accent); display:block; margin-bottom:4px; }
+  .step h3 { font-size:1rem; font-weight:600; margin-bottom:4px; }
+  .step p { margin:0; font-size:.88rem; color:var(--ink-soft); line-height:1.55; }
+
+  .shots { display:grid; gap:16px; grid-template-columns:1fr; }
+  @media (min-width:760px){ .shots{grid-template-columns:1fr 1fr;} }
+  .shots figure { margin:0; background:var(--surface); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); overflow:hidden; }
+  .shots img { display:block; width:100%; height:auto; cursor:zoom-in; border-bottom:1px solid var(--line); }
+  .shots figcaption { font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--ink-soft); padding:9px 12px; }
+
+  .dl { background:#05343A; color:#EAF3F2; border-radius:20px; padding:clamp(28px,6vw,52px); border:1px solid rgba(255,255,255,.06); display:grid; gap:28px; grid-template-columns:1fr; }
+  @media (min-width:820px){ .dl{grid-template-columns:1.1fr .9fr; align-items:center;} }
+  .dl h2 { color:#fff; font-weight:700; font-size:clamp(1.6rem,4.4vw,2.2rem); margin-bottom:10px; }
+  .dl p { color:#B9D4D2; margin:0 0 20px; }
+  .dl .btn-primary:hover { filter:brightness(1.08); }
+  .dl-meta { font-family:"IBM Plex Mono",monospace; font-size:12.5px; color:#B9D4D2; display:grid; gap:7px; }
+  .dl-meta div { display:flex; gap:10px; }
+  .dl-meta .k { color:#7FC0BF; min-width:92px; flex:none; }
+  .dl-meta .hash { word-break:break-all; color:#EAF3F2; font-size:11px; }
+  .dl ol { margin:18px 0 0; padding-left:20px; color:#B9D4D2; font-size:.9rem; }
+  .dl ol b { color:#fff; }
+
+  .cta-blk { background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:clamp(28px,6vw,48px); box-shadow:var(--shadow); }
+  .cta-blk h2 { font-weight:700; font-size:clamp(1.5rem,4.2vw,2.1rem); margin-bottom:10px; }
+  .cta-blk p { color:var(--ink-soft); margin:0 0 22px; max-width:56ch; }
+  .cta-lines { display:flex; flex-wrap:wrap; gap:10px 28px; font-family:"IBM Plex Mono",monospace; font-size:14px; margin-top:22px; }
+  .cta-lines .k { color:var(--accent); }
+  .cta-lines a { color:var(--ink); }
+
+  footer { padding:36px 0 52px; border-top:1px solid var(--line); color:var(--ink-soft); font-size:.84rem; }
+  footer .wrap { display:flex; flex-wrap:wrap; gap:8px 20px; justify-content:space-between; align-items:center; }
+  footer .brand { font-size:.95rem; }
+  footer .brand img { width:26px; height:26px; margin-right:8px; }
+  footer .legal { flex-basis:100%; font-size:.78rem; line-height:1.5; margin-top:6px; }
+
+  .lb { position:fixed; inset:0; z-index:200; display:none; align-items:center; justify-content:center; background:rgba(5,20,22,.88); padding:clamp(14px,4vw,48px); backdrop-filter:blur(3px); }
+  .lb.open { display:flex; }
+  .lb img { max-width:100%; max-height:100%; border-radius:12px; box-shadow:0 20px 70px rgba(0,0,0,.5); border:1px solid rgba(255,255,255,.12); }
+  .lb-close { position:absolute; top:clamp(10px,3vw,24px); right:clamp(10px,3vw,24px); width:46px; height:46px; border-radius:50%; border:1px solid rgba(255,255,255,.28); background:rgba(0,0,0,.4); color:#fff; font-size:24px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  :focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="GEDETCA SOFT — inicio"><img src="../img/logo.png" alt="">GEDETCA<span>&nbsp;SOFT</span></a>
+    <div class="nav-links">
+      <a href="#que-es">Qué es</a>
+      <a href="#con-web">Con Gedetca Web</a>
+      <a href="#capturas">Capturas</a>
+      <a href="../">GEDETCA SOFT</a>
+    </div>
+    <a class="nav-cta" href="#descargar">Descargar gratis</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="badge">Nuevo · Gratuito</span>
+    <h1><em>Gedetca Labels</em>: el motor de impresión de etiquetas.</h1>
+    <p class="lead">
+      Un motor de impresión <b>nuevo y gratuito</b>, pensado para satisfacer las necesidades de las
+      empresas para gestionar plantillas de etiquetas adhesivas. Y, complementado con
+      <b>Gedetca&nbsp;Web</b>, será el mejor sistema de etiquetas y pistoleo de códigos de barras
+      <b>1D y 2D</b>.
+    </p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#descargar">
+        <svg viewBox="0 0 24 24"><path d="M12 4v11m0 0 4.5-4.5M12 15l-4.5-4.5M5 20h14"/></svg>
+        Descargar Gedetca Labels
+      </a>
+      <a class="btn btn-ghost" href="#con-web">Ver lo que suma Gedetca Web</a>
+    </div>
+    <p class="hero-note">Windows 10 / 11 · instalador de 15 MB · sin registro · sin costo</p>
+
+    <figure class="hero-shot">
+      <img src="../img/labels-1.jpg" alt="Editor de Gedetca Labels con un código QR GS1 y texto" width="1600" height="941">
+      <figcaption>Editor de Gedetca Labels · etiqueta con QR y SSCC (00)</figcaption>
+    </figure>
+  </div>
+</header>
+
+<section class="blk" id="que-es">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Qué es</p>
+      <h2>Diseña la etiqueta una vez. Imprímela las veces que haga falta.</h2>
+      <p>Gedetca Labels es el diseñador y motor de impresión de etiquetas adhesivas. Se instala en minutos y funciona con las impresoras de etiquetas que ya tienes en Windows.</p>
+    </div>
+    <div class="mods">
+      <div class="mod">
+        <svg viewBox="0 0 24 24"><path d="M4 5v14M7 5v14M10 5v14M14 5v14M17 5v14M20 5v14"/></svg>
+        <h3>Códigos 1D y 2D</h3>
+        <p>Códigos de barras lineales y 2D (como QR), con texto legible y formato propio del código.</p>
+      </div>
+      <div class="mod">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h16"/><circle cx="18" cy="12" r="2"/></svg>
+        <h3>Asistente GS1 / SSCC</h3>
+        <p>Arma identificadores GS1 y SSCC con su dígito verificador, sin armarlos a mano.</p>
+      </div>
+      <div class="mod">
+        <svg viewBox="0 0 24 24"><path d="M8 4C6 4 5 5 5 7v2c0 1-1 2-2 3 1 1 2 2 2 3v2c0 2 1 3 3 3M16 4c2 0 3 1 3 3v2c0 1 1 2 2 3-1 1-2 2-2 3v2c0 2-1 3-3 3"/></svg>
+        <h3>Variables y series</h3>
+        <p>Campos que cambian en cada etiqueta, contadores y numeración «1 de N».</p>
+      </div>
+      <div class="mod">
+        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+        <h3>Formato de textos y fechas</h3>
+        <p>Fechas, números, prefijos y sufijos, y fórmulas al estilo de una hoja de cálculo.</p>
+      </div>
+      <div class="mod">
+        <svg viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H4v-8h16v8h-2M8 14h8v7H8z"/></svg>
+        <h3>Impresión directa</h3>
+        <p>Imprime en tus impresoras Windows, incluidas las térmicas Zebra, y exporta a PNG.</p>
+      </div>
+      <div class="mod">
+        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><path d="M14 14h6v6h-6z"/></svg>
+        <h3>Plantillas en un solo lugar</h3>
+        <p>Una biblioteca de formatos por tamaño de etiqueta, para duplicar y reutilizar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blk alt" id="con-web">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Gedetca Labels + Gedetca Web</p>
+      <h2>La etiqueta es solo la mitad. El sistema es lo que la hace trabajar.</h2>
+      <p>Gedetca Labels diseña e imprime. <b>Gedetca Web</b> pone los datos reales de tu operación en cada etiqueta, valida cada código al pistolear y deja la trazabilidad completa. Juntos reemplazan a un sistema de etiquetas tradicional.</p>
+    </div>
+    <div class="duo">
+      <div class="card solo">
+        <span class="tag">Solo Gedetca Labels</span>
+        <h3>Diseñar e imprimir</h3>
+        <p class="sub">Gratis. Ideal para armar y probar tus plantillas.</p>
+        <ul>
+          <li>Diseñas la plantilla de la etiqueta.</li>
+          <li>Tú escribes o cargas los datos de cada impresión.</li>
+          <li>Imprimes en una impresora a la vez, desde esta PC.</li>
+          <li>Las plantillas viven en el equipo donde las creaste.</li>
+        </ul>
+      </div>
+      <div class="card full">
+        <span class="tag">Con Gedetca Web</span>
+        <h3>Etiquetas y pistoleo, de punta a punta</h3>
+        <p class="sub">Lo que convierte una plantilla en una operación controlada.</p>
+        <ul>
+          <li><b>Los datos llegan solos:</b> producto, lote, fechas y cliente salen de tu base de datos, sin digitar.</li>
+          <li><b>SSCC y GS1 seriados:</b> cada pallet y cada caja con su código único, sin repetir.</li>
+          <li><b>Pistoleo 1D y 2D:</b> lee y valida con la cámara del celular o con un lector handheld, y avisa si algo no cuadra.</li>
+          <li><b>Trazabilidad por lote:</b> sabes qué etiqueta salió, cuándo y quién la imprimió.</li>
+          <li><b>Plantillas oficiales protegidas:</b> toda la planta imprime con el mismo formato aprobado, y nadie lo cambia sin permiso.</li>
+          <li><b>Impresión en red y app Android:</b> varias estaciones y operarios con el teléfono en la mano.</li>
+        </ul>
+        <a class="btn" href="../#contacto">Solicitar demo de Gedetca Web &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="flujo">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Cómo se usa junto</p>
+      <h2>De la plantilla a la caja pistoleada.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Diseñas</h3><p>Armas la plantilla en Gedetca Labels con sus códigos 1D y 2D.</p></div>
+      <div class="step"><h3>Gedetca Web la llena</h3><p>Toma los datos reales del lote y genera el SSCC de cada unidad.</p></div>
+      <div class="step"><h3>Imprime</h3><p>Sale directo a la impresora de etiquetas de la estación.</p></div>
+      <div class="step"><h3>Pistoleas</h3><p>El operario lee el código y Gedetca Web registra y valida el movimiento.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk alt" id="capturas">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Capturas</p>
+      <h2>Así se ve.</h2>
+      <p>Pantallas reales de Gedetca Labels. Haz clic en una para verla en grande.</p>
+    </div>
+    <div class="shots">
+      <figure>
+        <img src="../img/labels-3.jpg" alt="Pantalla de bienvenida de Gedetca Labels" loading="lazy" width="1600" height="956">
+        <figcaption>Inicio · nuevo, abrir o recientes</figcaption>
+      </figure>
+      <figure>
+        <img src="../img/labels-2.jpg" alt="Selección de tamaño de etiqueta" loading="lazy" width="1600" height="959">
+        <figcaption>Formatos de etiqueta por tamaño</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="descargar">
+  <div class="wrap">
+    <div class="dl">
+      <div>
+        <p class="eyebrow" style="color:#E0A98C">Descarga gratuita</p>
+        <h2>Descarga Gedetca Labels.</h2>
+        <p>Instalador para Windows. Sin registro y sin costo. Si lo vas a usar con Gedetca Web, instálalo en cada PC que imprime.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="GedetcaLabels_Setup.exe" download>
+            <svg viewBox="0 0 24 24"><path d="M12 4v11m0 0 4.5-4.5M12 15l-4.5-4.5M5 20h14"/></svg>
+            Descargar para Windows
+          </a>
+        </div>
+        <ol>
+          <li>Ejecuta <b>GedetcaLabels_Setup.exe</b>.</li>
+          <li>Si Windows muestra «SmartScreen», pulsa <b>Más información → Ejecutar de todas formas</b>.</li>
+          <li>Abre <b>Gedetca Labels</b> y crea tu primera etiqueta.</li>
+        </ol>
+      </div>
+      <div class="dl-meta">
+        <div><span class="k">Archivo</span><span>GedetcaLabels_Setup.exe</span></div>
+        <div><span class="k">Versión</span><span>1.0</span></div>
+        <div><span class="k">Tamaño</span><span>14,5 MB</span></div>
+        <div><span class="k">Sistema</span><span>Windows 10 / 11 (64 bits)</span></div>
+        <div><span class="k">Licencia</span><span>Gratuito (GNU GPL v3)</span></div>
+        <div><span class="k">SHA-256</span><span class="hash">5371496C3BF9633DCB8B5D7FB7B3008AF9A4B8E485F9FE92E4D3C63FAC7EF0B9</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blk alt" id="contacto">
+  <div class="wrap">
+    <div class="cta-blk">
+      <p class="eyebrow">¿Quieres el sistema completo?</p>
+      <h2>Gedetca Labels diseña. Gedetca Web hace que tu planta etiquete y pistolee sin errores.</h2>
+      <p>Te mostramos Gedetca Web con datos reales de una operación y armamos una propuesta según tu planta.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="../#contacto">Solicitar una demo</a>
+        <a class="btn btn-ghost" href="../">Conocer GEDETCA SOFT</a>
+      </div>
+      <div class="cta-lines">
+        <a href="https://wa.me/593983978603"><span class="k">WhatsApp:</span> +593 98 397 8603</a>
+        <a href="mailto:ventas@gedetca.com"><span class="k">Correo:</span> ventas@gedetca.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="brand"><img src="../img/logo.png" alt="">GEDETCA<span style="color:var(--teal)">&nbsp;SOFT</span></span>
+    <span>Gedetca Labels · motor de etiquetas gratuito</span>
+    <span><a href="../">Inicio</a> · © 2026</span>
+    <span class="legal">Gedetca Labels está basado en gLabels, software libre distribuido bajo la licencia GNU GPL v3. Los nombres y logotipos de terceros pertenecen a sus propietarios.</span>
+  </div>
+</footer>
+
+<div class="lb" id="lb" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="Cerrar zoom">&times;</button>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<script>
+(function () {
+  var lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg'), lbClose = document.getElementById('lbClose');
+  function abrir(src, alt) { lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
+  function cerrar() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); lbImg.removeAttribute('src'); document.body.style.overflow = ''; }
+  document.querySelectorAll('.hero-shot img, .shots img').forEach(function (img) {
+    img.addEventListener('click', function () { abrir(img.currentSrc || img.src, img.alt); });
+  });
+  lbClose.addEventListener('click', cerrar);
+  lb.addEventListener('click', function (e) { if (e.target === lb) cerrar(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrar(); });
+})();
+</script>
+</body>
+</html>
